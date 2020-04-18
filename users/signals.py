@@ -1,8 +1,10 @@
 from django.db.models.signals import post_save, pre_save
 from .models import AdtaaUser, Profile
 from django.dispatch import receiver
-from django.core.mail import send_mail
+from django.core.mail import send_mail, send_mass_mail
 from django.conf import settings
+
+superusers_emails = AdtaaUser.objects.filter(is_superuser=True).values_list('email', flat='true')
 
 @receiver(post_save, sender=AdtaaUser)
 def create_profile(sender, instance, created, **kwargs):
@@ -21,7 +23,7 @@ def send_email_to_root(sender, instance, created, **kwargs):
             'User {} has been created'.format(instance.username),
             'A new user has been created.  Access requested: {}'.format(instance.returnUserRequested()),
             'coffeeloversusa2020@gmail.com',
-            ['coffeeloversusa2020@gmail.com'],
+            superusers_emails,
             fail_silently=False,
 
         )
