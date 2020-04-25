@@ -7,7 +7,6 @@ from django.contrib.sites.shortcuts import get_current_site
 
 superusers_emails = AdtaaUser.objects.filter(is_superuser=True).values_list('email', flat='true')
 
-
 @receiver(post_save, sender=AdtaaUser)
 def create_profile(sender, instance, created, **kwargs):
     if created:
