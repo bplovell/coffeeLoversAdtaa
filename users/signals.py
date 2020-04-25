@@ -32,7 +32,7 @@ def send_email_to_root(sender, instance, created, **kwargs):
 
 @receiver(pre_save, sender=AdtaaUser, dispatch_uid='active')
 def active(sender, instance, **kwargs):
-    current_site = Site.objects.get_current(request)
+    current_site = get_current_site(request)
     if instance.is_active and AdtaaUser.objects.filter(pk=instance.pk, is_active=False).exists():
         subject = 'Active account'
         message = '{}, Your ADTAA account is now active.  You may login here: %s/login '.format(instance.username) % current_site.name
