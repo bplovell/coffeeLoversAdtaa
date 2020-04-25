@@ -35,7 +35,7 @@ def active(sender, instance, **kwargs):
     if instance.is_active and AdtaaUser.objects.filter(pk=instance.pk, is_active=False).exists():
         current_site = Site.objects.get_current(request)
         subject = 'Active account'
-        message = '{}, Your ADTAA account is now active.  You may login here: %s/login '.format(instance.username) % current_site.name
+        message = '{}, Your ADTAA account is now active.  You may login here: %s '.format(instance.username) % current_site.name
         # from_email = settings.EMAIL_HOST_USER
         from_email = 'coffeeloversusa2020@gmail.com'
         to_email = [instance.email]
