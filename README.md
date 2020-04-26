@@ -1,6 +1,19 @@
 # Coffee Lovers ADTAA app
+Code Credits:
+  Corey Schafer's tutorial: https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p
+  "invitations" app created by, bee-keeper: https://github.com/bee-keeper/django-invitations
 
-work in progress for UALR Capstone 4392
+### installation with heroku
+Add environment variables to enable email:
+  go to Settings -> Config Vars
+  select Reveal Config Vars and input your apps email address and email app password
+
+Deploy code to dyno
+Open bash console and run the following:
+  python manage.py makemigrations users
+  python manage.py makemigrations Adtaa
+  python manage.py migrate
+  python manage.py createsuperuser
 
 ### django
 ctrl-alt-i  
@@ -22,7 +35,7 @@ python manage.py migrate
 
 pip freeze  
 //will display list of packages  
-  
+
 
 ### Notes
 - in html it is acceptable to use 2 or 4 spaces for indentation just be consistent  
@@ -43,5 +56,3 @@ git reset -- filename
 
 git rm filename  
 //will remove file, assuming already removed locally  
-
-
