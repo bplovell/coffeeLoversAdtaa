@@ -30,7 +30,7 @@ class AdtaaRootUserForm(UserCreationForm):
     class Meta:
         model = AdtaaUser
         fields = [
-            'username', 'password1', 'password2'
+            'email', 'username', 'password1', 'password2'
         ]
 
     def clean(self):
